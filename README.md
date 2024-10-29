@@ -32,19 +32,18 @@ Make the script executable and move it to a directory in your PATH (e.g., `/usr/
 chmod +x afni.sh
 sudo mv afni.sh /usr/local/bin/afni
 ```
+- Alternatively, instead of moving the script, create a symbolic link in `/usr/local/bin` to keep the script in its current directory. This can make editing, updating, & maintaining the script easier.
+```bash
+sudo ln -s "$(pwd)/afni.sh" /usr/local/bin/afni
+```
 
 After moving the script to `/usr/local/bin`, refresh your terminal’s `PATH` to recognize the new command:
 
-- Run `hash -r` in the terminal to refresh the command table:
-   ```bash
-   hash -r
-   ```
-   This will update your shell to recognize the new script without needing to restart.
-
-- Alternatively, you can restart your terminal or source your `.bashrc` file:
-    ```bash
-    source ~/.bashrc
-    ```
+- Restart your terminal or run `hash -r` in the terminal to refresh the command table:
+```bash
+hash -r
+```
+`hash -r` will update your shell to recognize the new script without needing to restart.
 
 Before the first use, pull the `afni/afni_make_build` Docker image by running:
 ```bash
@@ -70,38 +69,38 @@ The script has two primary modes:
 ### Basic Commands
 
 1. **Launch the AFNI GUI** (uses the current directory as the data directory):
-   ```bash
-   afni
-   ```
+```bash
+afni
+```
 
 2. **Run an AFNI command** (defaults to the current directory for data files):
-   ```bash
-   afni "<afni command and associated arguments>"
-   ```
+```bash
+afni "<afni command and associated arguments>"
+```
    - Example:
-     ```bash
-     afni "3dinfo -n4 dataset.nii"
-     ```
+```bash
+afni "3dinfo -n4 dataset.nii"
+```
 
 ### Optional Flags
 
 - `-d, --data-directory <path>`: Specifies the data directory to be mounted in the container, overriding the default (current directory).
   - Example:
-    ```bash
-    afni -d /path/to/data "3dinfo -n4 dataset.nii"
-    ```
+```bash
+afni -d /path/to/data "3dinfo -n4 dataset.nii"
+```
 
 - `-u, --update-image`: Pulls the latest `afni/afni_make_build` Docker image to ensure you’re using the most recent version.
   - Example:
-    ```bash
-    afni -u
-    ```
+```bash
+afni -u
+```
 
 - `-h, --help`: Displays help information about usage and available flags.
   - Example:
-    ```bash
-    afni -h
-    ```
+```bash
+afni -h
+```
 
 ## Troubleshooting
 
