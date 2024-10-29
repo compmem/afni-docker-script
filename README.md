@@ -33,6 +33,19 @@ chmod +x afni.sh
 sudo mv afni.sh /usr/local/bin/afni
 ```
 
+After moving the script to `/usr/local/bin`, refresh your terminal’s `PATH` to recognize the new command:
+
+- Run `hash -r` in the terminal to refresh the command table:
+   ```bash
+   hash -r
+   ```
+   This will update your shell to recognize the new script without needing to restart.
+
+- Alternatively, you can restart your terminal or source your `.bashrc` file:
+    ```bash
+    source ~/.bashrc
+    ```
+
 Before the first use, pull the `afni/afni_make_build` Docker image by running:
 ```bash
 afni -u
