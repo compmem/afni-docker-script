@@ -32,7 +32,7 @@ Make the script executable and move it to a directory in your PATH (e.g., `/usr/
 chmod +x afni.sh
 sudo mv afni.sh /usr/local/bin/afni
 ```
-- Alternatively, instead of moving the script, create a symbolic link in `/usr/local/bin` to keep the script in its current directory. This can make editing, updating, & maintaining the script easier.
+- Alternatively, instead of moving the script, create a symbolic link in `/usr/local/bin` to keep the script in its current directory. The symbolic link approach may be preferred for developers as it will make editing, updating, & maintaining the script easier.
 ```bash
 sudo ln -s "$(pwd)/afni.sh" /usr/local/bin/afni
 ```
