@@ -18,23 +18,29 @@ A Bash script for simplifying use of the [afni/afni_make_build](https://hub.dock
 - [Docker](https://www.docker.com/)
 - Bash shell
 - X11 (for GUI functionality)
+- Curl
 
 ## Installation
 
-Clone this repository to your local machine:
+Download the shell script:
 ```bash
-git clone git@github.com:compmem/afni-docker-script.git
-cd afni-docker-script
+curl -O https://raw.githubusercontent.com/compmem/afni-docker-script/main/afni.sh
+```
+
+Ensure that the desired users computer users are part of the Docker group to allow them non-root access to Docker:
+```bash
+sudo usermod -aG docker <username>
+```
+
+Log out & back in for the group changes to take effect, or run the following to activate the changes:
+```bash
+newgrp docker
 ```
 
 Make the script executable and move it to a directory in your PATH (e.g., `/usr/local/bin`):
 ```bash
 chmod +x afni.sh
 sudo mv afni.sh /usr/local/bin/afni
-```
-- Alternatively, instead of moving the script, create a symbolic link in `/usr/local/bin` to keep the script in its current directory. The symbolic link approach may be preferred for developers as it will make editing, updating, & maintaining the script easier.
-```bash
-sudo ln -s "$(pwd)/afni.sh" /usr/local/bin/afni
 ```
 
 After moving the script to `/usr/local/bin`, refresh your terminal’s `PATH` to recognize the new command:
